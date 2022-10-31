@@ -4,7 +4,6 @@ import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-import net.dv8tion.jda.api.utils.FileUpload;
 import net.dv8tion.jda.api.utils.messages.MessageCreateBuilder;
 
 import java.text.SimpleDateFormat;
@@ -15,7 +14,7 @@ import java.util.TimerTask;
 public class Main extends ListenerAdapter
 {
     public static void main(String[] args) {
-        System.out.println("© Aariy.NET");
+        System.out.println("(c) 2022 Aariy.NET");
         JDABuilder jda = JDABuilder.createDefault(System.getProperty("token"));
         jda
                 .enableIntents(GatewayIntent.MESSAGE_CONTENT)
