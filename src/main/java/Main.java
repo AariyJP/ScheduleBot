@@ -1,9 +1,9 @@
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
+import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Timer;
@@ -37,8 +37,9 @@ public class Main extends ListenerAdapter
                 };
                 Timer timer = new Timer();
                 timer.schedule(task[0], d);
-            } catch (ParseException ex) {
-                throw new RuntimeException(ex);
+                e.getMessage().addReaction(Emoji.fromUnicode("✅")).queue();
+            } catch (Exception ex) {
+                e.getMessage().addReaction(Emoji.fromUnicode("🚫")).queue();
             }
 
         }
