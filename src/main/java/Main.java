@@ -20,9 +20,9 @@ public class Main extends ListenerAdapter {
     }
     public void onMessageReceived(MessageReceivedEvent e)
     {
-        String[] mes = e.getMessage().getContentRaw().split("\n");
         if(e.getChannel().getId().equals("id"))
         {
+            String[] mes = e.getMessage().getContentRaw().split("\n");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
             try {
                 Date d = sdf.parse(mes[0]);
