@@ -11,18 +11,15 @@ import java.util.TimerTask;
 
 public class Main extends ListenerAdapter
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println("© Aariy.NET");
         JDABuilder jda = JDABuilder.createDefault("token");
         jda
                 .addEventListeners(new Main())
                 .build();
     }
-    public void onMessageReceived(MessageReceivedEvent e)
-    {
-        if(e.getChannel().getId().equals("id"))
-        {
+    public void onMessageReceived(MessageReceivedEvent e) {
+        if(e.getChannel().getId().equals("id")) {
             String[] mes = e.getMessage().getContentRaw().split("\n");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
             try
@@ -40,11 +37,9 @@ public class Main extends ListenerAdapter
                 timer.schedule(task[0], d);
                 e.getMessage().addReaction(Emoji.fromUnicode("✅")).queue();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 e.getMessage().addReaction(Emoji.fromUnicode("🚫")).queue();
             }
-
         }
     }
 }
