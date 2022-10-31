@@ -9,7 +9,8 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Main extends ListenerAdapter {
+public class Main extends ListenerAdapter
+{
     public static void main(String[] args)
     {
         System.out.println("© Aariy.NET");
