@@ -28,7 +28,7 @@ public class Main extends ListenerAdapter
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
             try
             {
-                Date d = sdf.parse(mes[0].replaceAll("[\s]", ""));
+                Date d = sdf.parse(mes[0].replaceAll("\s", ""));
                 if(d.before(new Date()))
                     throw new Exception();
 
