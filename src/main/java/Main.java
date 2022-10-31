@@ -30,7 +30,7 @@ public class Main extends ListenerAdapter {
                         new TimerTask() {
                             @SuppressWarnings("ConstantConditions")
                             public void run() {
-                                ((GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1])).sendMessage(e.getMessage().getContentRaw().substring(mes[0].length()+mes[1].length()+2)).queue();
+                                ((GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>]", ""))).sendMessage(e.getMessage().getContentRaw().substring(mes[0].length()+mes[1].length()+2)).queue();
                             }
                         }
                 };
