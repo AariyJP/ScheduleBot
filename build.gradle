@@ -1,0 +1,29 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'java'
+}
+
+group 'net.aariy'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.dv8tion:JDA:5.0.0-alpha.22'
+}
+
+shadowJar {
+    archiveBaseName.set('ScheduleMes')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+tasks.named("classes") { finalizedBy("shadowJar") }
