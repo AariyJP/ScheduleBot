@@ -25,7 +25,8 @@ public class Main extends ListenerAdapter
         {
             String[] mes = e.getMessage().getContentRaw().split("\n");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
-            try {
+            try
+            {
                 Date d = sdf.parse(mes[0]);
                 TimerTask[] task = {
                         new TimerTask() {
@@ -38,7 +39,9 @@ public class Main extends ListenerAdapter
                 Timer timer = new Timer();
                 timer.schedule(task[0], d);
                 e.getMessage().addReaction(Emoji.fromUnicode("✅")).queue();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 e.getMessage().addReaction(Emoji.fromUnicode("🚫")).queue();
             }
 
