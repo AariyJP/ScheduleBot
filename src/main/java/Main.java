@@ -26,8 +26,7 @@ public class Main extends ListenerAdapter
         if(e.isFromGuild() && !e.getAuthor().isBot() && e.getChannel().getId().equals(System.getProperty("ch"))) {
             String[] mes = e.getMessage().getContentRaw().split("\n");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
-            try
-            {
+            try {
                 Date d = sdf.parse(mes[0].replaceAll("\s", ""));
                 if(d.before(new Date()))
                     throw new Exception();
