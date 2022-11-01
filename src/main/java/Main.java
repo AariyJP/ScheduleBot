@@ -14,6 +14,7 @@ import java.util.TimerTask;
 public class Main extends ListenerAdapter
 {
     public static void main(String[] args) {
+        System.out.println("ScheduleBot is starting up");
         System.out.println("(c) 2022 Aariy.NET");
         JDABuilder jda = JDABuilder.createDefault(System.getProperty("token"));
         jda
