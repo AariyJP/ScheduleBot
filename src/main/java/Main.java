@@ -45,11 +45,11 @@ public class Main extends ListenerAdapter
                 };
                 Timer timer = new Timer();
                 timer.schedule(task[0], d);
-                e.getMessage().addReaction(Emoji.fromFormatted("<:done:941551131803414619>")).queue();
+                e.getMessage().addReaction(Emoji.fromFormatted(":white_check_mark:")).queue();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
-                e.getMessage().addReaction(Emoji.fromFormatted("<:err:906843229230624768>")).queue();
+                e.getMessage().addReaction(Emoji.fromFormatted(":no_entry_sign:")).queue();
             }
         }
     }
