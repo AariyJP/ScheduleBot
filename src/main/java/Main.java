@@ -35,6 +35,7 @@ public class Main extends ListenerAdapter
                         new TimerTask() {
                             @SuppressWarnings("ConstantConditions")
                             public void run() {
+                                if(e.getChannel().retrieveMessageById(e.getMessage().getId()).complete() == null) return;
                                 MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(e.getMessage().getContentRaw().substring(mes[0].length()+mes[1].length()+2));
                                 GuildMessageChannel gmc = (GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>\s]", ""));
                                 gmc.sendMessage(mcb.build()).queue();
@@ -49,7 +50,6 @@ public class Main extends ListenerAdapter
             }
             catch (Exception ex) {
                 ex.printStackTrace();
-                e.getMessage().addReaction(Emoji.fromFormatted(":no_entry_sign:")).queue();
             }
         }
     }
