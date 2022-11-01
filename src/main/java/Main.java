@@ -46,7 +46,7 @@ public class Main extends ListenerAdapter
                 };
                 Timer timer = new Timer();
                 timer.schedule(task[0], d);
-                e.getMessage().addReaction(Emoji.fromFormatted(":white_check_mark:")).queue();
+                e.getMessage().addReaction(Emoji.fromFormatted("✅")).queue();
             }
             catch (Exception ex) {
                 ex.printStackTrace();
