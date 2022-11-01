@@ -21,6 +21,7 @@ public class Main extends ListenerAdapter
                 .addEventListeners(new Main())
                 .build();
     }
+
     public void onMessageReceived(MessageReceivedEvent e) {
         if(e.isFromGuild() && !e.getAuthor().isBot() && e.getChannel().getId().equals(System.getProperty("ch"))) {
             String[] mes = e.getMessage().getContentRaw().split("\n");
