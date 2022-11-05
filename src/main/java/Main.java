@@ -1,4 +1,5 @@
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.channel.middleman.GuildMessageChannel;
 import net.dv8tion.jda.api.entities.emoji.Emoji;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -37,11 +38,11 @@ public class Main extends ListenerAdapter
                             @SuppressWarnings("ConstantConditions")
                             public void run() {
                                 if(e.getChannel().retrieveMessageById(e.getMessage().getId()).complete() == null) return;
-                                MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(e.getMessage().getContentRaw().substring(mes[0].length()+mes[1].length()+2));
+                                Message tar = e.getChannel().retrieveMessageById(e.getMessage().getId()).complete();
+                                MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(tar.getContentRaw().substring(mes[0].length()+mes[1].length()+2));
                                 GuildMessageChannel gmc = (GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>\s]", ""));
                                 gmc.sendMessage(mcb.build()).queue();
-                                e.getMessage().getAttachments().forEach(attachment -> gmc.sendMessage(attachment.getUrl()).queue());
-
+                                tar.getAttachments().forEach(attachment -> gmc.sendMessage(attachment.getUrl()).queue());
                             }
                         }
                 };
