@@ -28,6 +28,7 @@ public class Main extends ListenerAdapter
         if(e.isFromGuild() && !e.getAuthor().isBot() && e.getChannel().getId().equals(System.getProperty("ch"))) {
             String[] mes = e.getMessage().getContentRaw().split("\n");
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd.hh.mm");
+            GuildMessageChannel gmc = (GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>\s]", ""));
             try {
                 Date d = sdf.parse(mes[0].replaceAll("\s", ""));
                 if(d.before(new Date()))
@@ -41,7 +42,6 @@ public class Main extends ListenerAdapter
                                 Message tar = e.getChannel().retrieveMessageById(e.getMessage().getId()).complete();
                                 String[] tm = tar.getContentRaw().split("\n");
                                 MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(tar.getContentRaw().substring(tm[0].length()+tm[1].length()+2));
-                                GuildMessageChannel gmc = (GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>\s]", ""));
                                 gmc.sendMessage(mcb.build()).queue();
                                 tar.getAttachments().forEach(attachment -> gmc.sendMessage(attachment.getUrl()).queue());
                             }
