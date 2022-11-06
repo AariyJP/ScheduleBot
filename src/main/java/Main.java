@@ -39,7 +39,8 @@ public class Main extends ListenerAdapter
                             public void run() {
                                 if(e.getChannel().retrieveMessageById(e.getMessage().getId()).complete() == null) return;
                                 Message tar = e.getChannel().retrieveMessageById(e.getMessage().getId()).complete();
-                                MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(tar.getContentRaw().substring(mes[0].length()+mes[1].length()+2));
+                                String[] tm = tar.getContentRaw().split("\n");
+                                MessageCreateBuilder mcb = new MessageCreateBuilder().setContent(tar.getContentRaw().substring(tm[0].length()+tm[1].length()+2));
                                 GuildMessageChannel gmc = (GuildMessageChannel)e.getJDA().getGuildChannelById(mes[1].replaceAll("[<#>\s]", ""));
                                 gmc.sendMessage(mcb.build()).queue();
                                 tar.getAttachments().forEach(attachment -> gmc.sendMessage(attachment.getUrl()).queue());
